@@ -1,0 +1,47 @@
+$slidewidth: 256px;
+$height: 100%;
+$slidecolor: cadetblue;
+$bgcolor: #f8f9fa;
+$contentcolor: cornsilk;
+
+#root,
+.App,
+.app{
+    height: $height;
+}
+
+.app {
+    background-color: $bgcolor;
+    display: flex;
+}
+
+.app-slide {
+    width: $slidewidth;
+    height: $height;
+    background-color: $slidecolor;
+}
+
+.app-content {
+    flex: 1;
+    height: $height;
+    overflow: auto;
+    background-color: $contentcolor;
+}
+.ant-menu{
+    height:$height;
+}
+.m-operate{
+    text-align: right;
+    padding-bottom: 10px;
+    padding-right: 5px;
+}
+
+.modal-form .ant-form-item{
+    pointer-events: none;
+}
+.modal-form .ant-modal-footer{
+    display: none;
+}
+.m-filter{
+    margin-bottom: 10px;
+}
