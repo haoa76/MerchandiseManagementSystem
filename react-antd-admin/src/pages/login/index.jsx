@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import { Form, Input, Button } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import './style/index.scss'
@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setUserInfo } from '../../store/reducers/userInfoSlice'
 export default function Index() {
-    const [loginTo,setLoginTo]=useState(false)
+    const [loginTo, setLoginTo] = useState(false)
     const dispatch = useDispatch()
     const onLogin = (values) => {
         console.log(values)
@@ -20,26 +20,31 @@ export default function Index() {
                 setLoginTo(true)
             } else if (res.code === '-1') {
                 message.error(res.message)
-            }else {
+            } else {
                 message.error('请求出错')
             }
         })
     }
     return (
-        <div className="m-login">
-            <Form onFinish={onLogin}>
-                <h4>登录</h4>
-                <Form.Item name='account' rules={[{ required: true, message: '请输入账号' }]}>
-                    <Input prefix={<UserOutlined />} placeholder='请输入账号' />
-                </Form.Item>
-                <Form.Item name='password' rules={[{ required: true, message: '请输入密码' }]}>
-                    <Input prefix={<LockOutlined />} placeholder='请输入密码' />
-                </Form.Item>
-                <Form.Item >
-                    <Button type='primary' block htmlType='submit'>登录</Button>
-                </Form.Item>
-            </Form>
-            {loginTo && <Navigate to='/'/>}
-        </div>
+        <>
+            <div className="m-login">
+                <div className='m-title'>
+                    <h1>欢迎来到商品后台管理系统！</h1>
+                </div>
+                <Form onFinish={onLogin}>
+                    <h4>登录</h4>
+                    <Form.Item name='account' rules={[{ required: true, message: '请输入账号' }]}>
+                        <Input prefix={<UserOutlined />} placeholder='请输入账号' />
+                    </Form.Item>
+                    <Form.Item name='password' rules={[{ required: true, message: '请输入密码' }]}>
+                        <Input prefix={<LockOutlined />} placeholder='请输入密码' />
+                    </Form.Item>
+                    <Form.Item >
+                        <Button type='primary' block htmlType='submit'>登录</Button>
+                    </Form.Item>
+                </Form>
+                {loginTo && <Navigate to='/' />}
+            </div>
+        </>
     )
 }

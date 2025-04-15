@@ -1,26 +1,25 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import _ from "lodash";
-import User from "./pages/setting/user/index";
-import Business from "./pages/business/product/index";
-import OverView from "./pages/business/overview/index";
-import HomeDiv from "./pages/HomeDiv";
-import Home from "./pages/Home";
-import Menu from "./pages/setting/menu/index"
-import LoginPage from './pages/login/index'
+const User = React.lazy(() => import("./pages/setting/user/index"));
+const Business = React.lazy(() => import("./pages/business/product/index"));
+const OverView = React.lazy(() => import("./pages/business/overview/index"));
+const HomeDiv = React.lazy(() => import("./pages/HomeDiv"));
+const Home = React.lazy(() => import("./pages/Home"));
+const Menu = React.lazy(() => import("./pages/setting/menu/index"));
+const LoginPage = React.lazy(() => import("./pages/login/index"));
 const Page404 = () => <div>404 Not Found</div>;
-
 function App() {
   return (
     <div className="App">
       <Router>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div><h1>加载中...</h1></div>}>
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/"
               element={
-                <Suspense fallback={<div>Loading Layout...</div>}>
+                <Suspense fallback={<div><h1>加载中...</h1></div>}>
                   <HomeDiv />
                 </Suspense>
               }
