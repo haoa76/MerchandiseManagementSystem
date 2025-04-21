@@ -33,4 +33,5 @@ app.use((err,req,res,next)=>{
     console.info(err.stack);
     res.status('500').send('服务端出错了');
 })
+
 app.listen(3030, () => { console.log('服务器运行在3030端口') });
